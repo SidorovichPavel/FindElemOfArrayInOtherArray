@@ -39,16 +39,5 @@ int main()
 		std::cout << "Value " << pair.first << " repeat counter: " << pair.second << std::endl;
 		});
 
-	std::ofstream fout;
-
-	fout.open("srcv.txt");
-	std::ranges::for_each(srcv, [&](auto& e) {fout << e << std::endl; });
-	fout.close();
-
-	std::ranges::sort(datav);
-	fout.open("datav.txt");
-	std::ranges::for_each(datav, [&](auto& de) {fout << de << std::endl; });
-	fout.close();
-
 	return 0;
 }
