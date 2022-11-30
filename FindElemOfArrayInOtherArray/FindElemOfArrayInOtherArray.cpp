@@ -26,18 +26,14 @@ int main()
 	for (auto& e : datav)
 		e = get_randval(max_val);
 
-	std::map<int, size_t> direct;
-
+	auto counter = 0;
 	auto& e = srcv.front();
-	direct[e] = 0;//it does not matter
 	for (auto de : datav)
 		if (e == de)
-			direct[e]++;
+			counter++;
 
 
-	std::ranges::for_each(direct, [](auto& pair) {
-		std::cout << "Value " << pair.first << " repeat counter: " << pair.second << std::endl;
-		});
+	std::cout << "Value " << e << " repeat counter: " << counter << std::endl;
 
 	return 0;
 }
