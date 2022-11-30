@@ -23,7 +23,8 @@ int main()
         e = get_randval(max_val);
 
     std::ranges::sort(srcv);
-    auto unique = std::ranges::unique(srcv);
+    auto [rep_begin, rep_end] = std::ranges::unique(srcv);
+    srcv.erase(rep_begin, rep_end);
 
     std::vector<int> datav(data_size);
     for (auto& e : datav)
@@ -31,7 +32,7 @@ int main()
 
     std::map<int, size_t> direct;
 
-    for (auto& e : unique)
+    for (auto& e : srcv)
     {
         direct[e] = 0;//it does not matter
         for (auto de : datav)
@@ -46,7 +47,7 @@ int main()
     std::ofstream fout;
 
     fout.open("srcv.txt");
-    std::ranges::for_each(unique, [&](auto& e) {fout << e << std::endl; });
+    std::ranges::for_each(srcv, [&](auto& e) {fout << e << std::endl; });
     fout.close();
 
     std::ranges::sort(datav);
